@@ -1,3 +1,17 @@
+"""
+This script contains functions to manage a game of cannon ball.
+
+Welcome to cannon ball!
+
+When you see blue target balls on screen, try to hit them with
+the cannon ball by tapping on the screen to specify the direction of
+the launch. When the target balls touch the screen, they´ll respawn.
+Hit as many target balls as you can.
+
+Good luck!
+
+"""
+
 # Standard library.
 from random import randrange
 
