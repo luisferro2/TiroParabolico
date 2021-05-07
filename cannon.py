@@ -14,29 +14,42 @@ targets = []  # Target balls.
 
 
 def tap(x, y):
-    "Respond to screen tap."
+    """
+    Change the speed of the cannon ball with the tap.
+
+    A tap on coordinates x, y needs to be adjusted to make the
+    coordinates positive. It is also scaled down so it´s not too quick.
+
+    Parameters:
+    x: int -- x coordinate.
+    y: int -- y coordinate.
+
+    Returns:
+    None
+    """
+
     if not inside(ball):
         ball.x = -199
         ball.y = -199
         # The coordinates of the tap indicate the speed vector of
         # ball. Sum 200 to make the lower left corner the (0, 0).
-        speed.x = (x + 200) / 7
+        speed.x = (x + 200) / 7  # Faster throw, it was / 25.
         speed.y = (y + 200) / 7
 
 
 def inside(xy):
-    "Return True if xy within screen."
+    """Returns whether or not the given xy vector fits to screen."""
     return -200 < xy.x < 200 and -200 < xy.y < 200
 
 
 def draw():
-    "Draw ball and targets."
-    clear()
+    """Clears screen, draws cannon ball and target balls on screen."""
+    clear()  # Clears the screen before drawing new balls.
 
     # Draw the target balls.
     for target in targets:
-        goto(target.x, target.y)
-        dot(20, 'blue')
+        goto(target.x, target.y)  # Move pointer to position.
+        dot(20, "blue")
 
     # Draw the cannon ball.
     if inside(ball):
@@ -48,9 +61,23 @@ def draw():
 
 
 def move():
-    "Move ball and targets."
+    """
+    Manage the movement of balls and their interactions.
 
-    # Generate a target ball.
+    
+    This function generates the target balls, it moves them to the
+    left, it moves the cannon ball downwards to simulate gravity,
+    it removes the target balls that are hit by the cannon ball
+    and repositions the target balls once they hit the screen.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    """
+
+    # Generate a target balls, 1/40 chance.
     if randrange(40) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
@@ -74,18 +101,16 @@ def move():
         if abs(target - ball) > 13:
             targets.append(target)
 
-    # Draw the balls.
-    draw()
-
     #Reposition balls when they reach the edge of the screen
     for target in targets:
         if not inside(target):
             target.x = randrange(-150, 150)
             target.y = randrange(-150, 150)
-            draw()
+            draw()  # Draw all balls.
 
     # Wait 50 ms to call move function.
     ontimer(move, 50)
+
 
 # Initial steps.
 setup(420, 420, 370, 0)
