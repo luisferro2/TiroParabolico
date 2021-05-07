@@ -55,9 +55,12 @@ def move():
 
     draw()
 
+    #Reposition balls when they reach the edge of the screen 
     for target in targets:
         if not inside(target):
-            return
+            target.x = randrange(-150, 150)
+            target.y = randrange(-150, 150)
+            draw()
 
     ontimer(move, 50)
 
