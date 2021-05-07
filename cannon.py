@@ -1,4 +1,7 @@
+# Standard library.
 from random import randrange
+
+# Third party related imports.
 from turtle import clear, goto, dot,       \
                    update, ontimer, setup, \
                    hideturtle, up, tracer, \
