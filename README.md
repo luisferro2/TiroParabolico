@@ -1,5 +1,5 @@
 # Cannon
-A program for the classic game cannon. In the original program the target balls moved slowly and tht cannon ball had a rather slow launch speed. When the target balls reached the wall, the game stopped.
+A program for the classic game cannon. In the original program the target balls moved slowly and the cannon ball had a rather slow launch speed. When the target balls reached the wall, the game stopped.
 
 ## Contributions 
 Luis Ignacio Ferro Salinas 
