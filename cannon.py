@@ -47,8 +47,8 @@ def tap(x, y):
         ball.y = -199
         # The coordinates of the tap indicate the speed vector of
         # ball. Sum 200 to make the lower left corner the (0, 0).
-        speed.x = (x + 200) / 7  # Faster throw, it was / 25.
-        speed.y = (y + 200) / 7
+        speed.x = (x + 200) / 10  # Faster throw, it was / 25.
+        speed.y = (y + 200) / 10
 
 
 def inside(xy):
@@ -114,6 +114,9 @@ def move():
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
+
+    # Draw the changes.
+    draw()
 
     #Reposition balls when they reach the edge of the screen
     for target in targets:
